@@ -33,6 +33,9 @@ namespace API
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddControllers();
+            services.ConfigureSwaggerGen(opts => {
+                opts.CustomSchemaIds(x => x.FullName);
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
