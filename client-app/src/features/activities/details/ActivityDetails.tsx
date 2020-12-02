@@ -13,7 +13,10 @@ const ActivityDetails: React.FC<RouteComponentProps<IDetailParams>> = ({
   history
 }) => {
     const activityStore = useContext(ActivityStore);
-    const {activity, openEditForm, cancelSelectedActivity, loadActivity, loadingInitial} = activityStore;
+    const {
+      activity, 
+      loadActivity, 
+      loadingInitial} = activityStore;
 
     useEffect(() => {
       loadActivity(match.params.id);
@@ -39,7 +42,7 @@ const ActivityDetails: React.FC<RouteComponentProps<IDetailParams>> = ({
           <Button.Group widths={2}>
             <Button
               as={Link} to={`/manage/${activity!.id}`}
-              onClick={() => openEditForm(activity!.id)}
+              onClick={() => `/activities/${activity!.id}`}
               basic
               color="blue"
               content="Edit"
