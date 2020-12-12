@@ -26,7 +26,7 @@ namespace Reactivities.Application.Activities
 
             public async Task<Activity> Handle(Query request, CancellationToken cancellationToken)
             {
-                var activity = await _context.Activities.FindAsync(request.Id, cancellationToken); 
+                var activity = await _context.Activities.FindAsync(request.Id); 
                 if(activity == null)
                 {
                     throw new RestException(HttpStatusCode.NotFound, new {

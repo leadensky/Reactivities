@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Item, Image, Header, Button } from "semantic-ui-react";
 import Segment from "semantic-ui-react/dist/commonjs/elements/Segment/Segment";
 import { IActivity } from "../../../app/models/activity";
+import { format } from "date-fns";
 
 const activityImageStyle = {
   filter: 'brightness(30%)'
@@ -34,7 +35,7 @@ const ActivityDetailedHeader: React.FC<{activity: IActivity}> = ({
                   content={activity.title}
                   style={{ color: "white" }}
                 />
-                <p>{activity.date}</p>
+                <p>{format(activity.date, "eeee do MMMM")}</p>
                 <p>
                   Hosted by <strong>Bob</strong>
                 </p>
