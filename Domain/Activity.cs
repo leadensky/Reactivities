@@ -1,6 +1,6 @@
 using System;
 
-namespace Reactivities.Domain
+namespace Domain
 {
     public class Activity
     {

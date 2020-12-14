@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Application.Errors;
 using MediatR;
 using Persistence;
-using Reactivities.Domain;
+using Domain;
 
 namespace Reactivities.Application.Activities
 {

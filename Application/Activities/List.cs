@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
-using Reactivities.Domain;
+using Domain;
 
 namespace Reactivities.Application.Activities
 {
