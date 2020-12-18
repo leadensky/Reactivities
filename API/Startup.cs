@@ -69,6 +69,7 @@ namespace API
                     };
                 });
             services.AddScoped<IJwtGenerator, JwtGenerator>();
+            services.AddScoped<IUserAccessor, UserAccessor>();
             
             services.ConfigureSwaggerGen(opts => {
                 opts.CustomSchemaIds(x => x.FullName);
