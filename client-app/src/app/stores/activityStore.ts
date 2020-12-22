@@ -4,10 +4,18 @@ import { toast } from "react-toastify";
 import { history } from "../..";
 import agent from "../api/agent";
 import { IActivity } from "../models/activity";
+import { RootStore } from "./rootStore";
 
 configure({ enforceActions: 'always'});
 
-class ActivityStore {
+export default class ActivityStore {
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore){
+    this.rootStore = rootStore;
+    makeObservable(this);
+  }
+
   @observable activityRegistry = new Map();
   @observable loadingInitial = false;
   @observable activity: IActivity | null = null;
@@ -28,10 +36,6 @@ class ActivityStore {
       activities[date] = activities[date] ? [...activities[date], activity] : [activity];
       return activities;
     }, {} as {[key: string]: IActivity[]}));
-  }
-
-  constructor() {
-    makeObservable(this);
   }
 
   @action loadActivities = async () => {
@@ -146,5 +150,3 @@ class ActivityStore {
     this.activity = null;
   };
 }
-
-export default createContext(new ActivityStore());
