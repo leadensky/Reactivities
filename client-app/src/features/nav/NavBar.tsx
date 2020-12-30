@@ -7,7 +7,7 @@ import { Image } from "semantic-ui-react";
 
 const NavBar: React.FC = () => {
   const rootStore = useContext(RootStoreContext);
-  const { isLoggedIn, user } = rootStore.userStore;
+  const { user, logout } = rootStore.userStore;
 
   return (
     <Menu fixed="top" inverted>
@@ -31,16 +31,16 @@ const NavBar: React.FC = () => {
         </Menu.Item>
         {user && (
           <Menu.Item position="right">
-            <Image avatar spaced="right" src={user.image || "/assets/user.png"} />
+            text="My profile"
+            <Image
+              avatar
+              spaced="right"
+              src={user.image || "/assets/user.png"}
+            />
             <Dropdown pointing="top left" text={user.displayName}>
               <Dropdown.Menu>
-                <Dropdown.Item
-                  as={Link}
-                  to={`/profile/username`}
-                  text="My profile"
-                  icon="user"
-                />
-                <Dropdown.Item text="Logout" icon="power" />
+                <Dropdown.Item as={Link} to={`/profile/username`} icon="user" />
+                <Dropdown.Item text="Logout" icon="power" onClick={logout} />
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Item>
