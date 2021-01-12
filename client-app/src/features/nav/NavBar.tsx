@@ -30,8 +30,8 @@ const NavBar: React.FC = () => {
           />
         </Menu.Item>
         {user && (
-          <Menu.Item position="right">
-            text="My profile"
+          <Menu.Item position="right"
+            text="My profile">
             <Image
               avatar
               spaced="right"

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useContext, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
-import { LoadingComponent } from '../../../app/layout/LoadingComponent';
+import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { RootStoreContext } from '../../../app/stores/rootStore';
 import { ActivityDetailedChat } from './ActivityDetailedChat';
 import ActivityDetailedHeader from './ActivityDetailedHeader';

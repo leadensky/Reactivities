@@ -3,7 +3,7 @@ import agent from "../api/agent";
 import { IUser, IUserFormValues } from "../models/user";
 import { RootStore } from "./rootStore";
 import { history } from '../..';
-import { useRouteMatch } from "react-router-dom";
+
 export default class UserStore {
   rootStore: RootStore;
 
@@ -24,11 +24,34 @@ export default class UserStore {
         this.user = user;
       });
       this.rootStore.commonStore.setToken(user.token);
+      this.rootStore.modalStore.closeModal();
       history.push('/activities');
     } catch (error) {
       throw error;
     }
   };
+
+  @action register = async (values: IUserFormValues) => {
+    try {
+      const user = await agent.User.register(values);
+      this.rootStore.commonStore.setToken(user.token);
+      this.rootStore.modalStore.closeModal();
+      history.push('/activities');
+    } catch(error) {
+      throw error;
+    }
+  }
+
+  @action getUser = async () => {
+    try {
+      const user = await agent.User.current();
+      runInAction(() => {
+        this.user = user;
+      })
+    } catch(error) {
+      console.log(error);
+    }
+  }
 
   @action logout = () => {
     this.rootStore.commonStore.setToken(null);
