@@ -5,7 +5,7 @@ import { RootStoreContext } from "../../app/stores/rootStore";
 import LoginForm from "../user/LoginForm";
 import RegisterForm from "../user/RegisterForm";
 
-export const HomePage = () => {
+const HomePage = () => {
   const rootStore = useContext(RootStoreContext);
   const { isLoggedIn, user } = rootStore.userStore;
   const {openModal} = rootStore.modalStore;
@@ -52,3 +52,5 @@ export const HomePage = () => {
     </Segment>
   );
 };
+
+export default HomePage;
