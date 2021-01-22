@@ -19,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Persistence;
 using Reactivities.Application.Activities;
+using AutoMapper;
 
 namespace API
 {
@@ -35,6 +36,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(opt => {
+                opt.UseLazyLoadingProxies();
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddCors(opts => {
@@ -43,6 +45,7 @@ namespace API
                 });
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddAutoMapper(typeof(List.Handler));
             services.AddControllers(opt => 
                 {
                     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
