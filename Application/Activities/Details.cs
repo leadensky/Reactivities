@@ -32,7 +32,7 @@ namespace Reactivities.Application.Activities
             public async Task<ActivityDto> Handle(Query request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Activities
-                    .FindAsync(request.Id, cancellationToken);
+                    .FindAsync(request.Id);
 
                 if (activity == null)
                 {
