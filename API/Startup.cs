@@ -20,6 +20,7 @@ using Microsoft.OpenApi.Models;
 using Persistence;
 using Reactivities.Application.Activities;
 using AutoMapper;
+using Infrastructure.Photos;
 
 namespace API
 {
@@ -87,6 +88,8 @@ namespace API
                 });
             services.AddScoped<IJwtGenerator, JwtGenerator>();
             services.AddScoped<IUserAccessor, UserAccessor>();
+            services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("Cloudinary"));
 
             services.ConfigureSwaggerGen(opts =>
             {
