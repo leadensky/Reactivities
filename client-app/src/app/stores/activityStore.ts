@@ -1,7 +1,6 @@
 import { action, observable, computed, runInAction, configure } from "mobx";
 import { SyntheticEvent } from "react";
 import { toast } from "react-toastify";
-import { sortAndDeduplicateDiagnostics } from "typescript";
 import { history } from "../..";
 import agent from "../api/agent";
 import { createAttendee, setActivityProps } from "../common/util/util";
@@ -102,6 +101,12 @@ export default class ActivityStore {
     this.submitting = true;
     try {
       await agent.Activities.create(activity);
+      const attendee = createAttendee(this.rootStore.userStore.user!);
+      attendee.isHost = true;
+      let attendees = [];
+      attendees.push(attendee);
+      activity.attendees = attendees;
+      activity.isHost = true;
       runInAction(() => {
         this.activityRegistry.set(activity.id, activity);
         this.submitting = false;

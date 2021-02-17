@@ -5,7 +5,6 @@ import { Item, Image, Header, Button } from "semantic-ui-react";
 import Segment from "semantic-ui-react/dist/commonjs/elements/Segment/Segment";
 import { IActivity } from "../../../app/models/activity";
 import { format } from "date-fns";
-import { is } from "date-fns/locale";
 import { RootStoreContext } from "../../../app/stores/rootStore";
 
 const activityImageStyle = {
