@@ -3,7 +3,7 @@ obj
 .vscode
 appsettings.json
 *.db
-Course+Assets.zip
 reactivities.code-snippets
 Reactivities.postman_collection.json
 snippets.txt
+Course*
