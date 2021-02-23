@@ -30,8 +30,7 @@ const NavBar: React.FC = () => {
           />
         </Menu.Item>
         {user && (
-          <Menu.Item position="right"
-            text="My profile">
+          <Menu.Item position="right" text="My profile">
             <Image
               avatar
               spaced="right"
@@ -39,7 +38,11 @@ const NavBar: React.FC = () => {
             />
             <Dropdown pointing="top left" text={user.displayName}>
               <Dropdown.Menu>
-                <Dropdown.Item as={Link} to={`/profile/username`} icon="user" />
+                <Dropdown.Item
+                  as={Link}
+                  to={`/profile/${user.username}`}
+                  icon="user"
+                />
                 <Dropdown.Item text="Logout" icon="power" onClick={logout} />
               </Dropdown.Menu>
             </Dropdown>
